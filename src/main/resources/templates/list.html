@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <style>
+        .user-card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .user-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+
+</head>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h1 class="text-center">User List</h1>
+            <h1 class="text-center">
+                You have
+                <span id="unreadMessagesCount" th:text="${messageCount}">0</span>
+                unread messages
+            </h1>
+        </div>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-4" th:each="u : ${users}">
+            <div class="card user-card">
+                <div class="card-body text-center">
+                    <h5 class="card-title" th:text="${u.getUsername()}">Username</h5>
+                    <div class="d-flex justify-content-between mt-3">
+                        <a th:href="@{'/users/{id}/edit' (id=${u.getId()})}" class="btn btn-primary">Edit</a>
+                        <a th:href="@{'/chat/{username}/createGroup' (username=${u.getUsername()})}" class="btn btn-info">Chat</a>
+                        <form method="post" th:action="@{'/users/{id}/delete' (id=${u.getId()})}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/websocket.js"></script>
+</body>
+</html>
