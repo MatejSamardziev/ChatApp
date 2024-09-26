@@ -3,8 +3,8 @@ utilizing WebSockets for seamless bi-directional communication and RabbitMQ for 
 This project demonstrates a robust backend integration, 
 with modern web technologies to deliver a dynamic and interactive chat experience.
 
-You can check out the web app for yourself on: 
-[chatwebapp-abfagrc3amhwh9fc](https://chatwebapp-abfagrc3amhwh9fc.italynorth-01.azurewebsites.net)
+
+This project is designed to be hosted on Azure, but due to a recent issue, it is currently not accessible online. I am actively working on resolving this issue and will update the repository once the site is fully operational again.
 
 
 I have provided a Diagram to better visualize the basic functions of the web app and how it works
